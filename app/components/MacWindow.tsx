@@ -111,9 +111,11 @@ export default function MacWindow({
                 ? "1px solid var(--window-border-focused)"
                 : "1px solid var(--window-border-unfocused)",
               boxShadow: isFocused
-                ? "0 40px 80px rgba(0,0,0,0.9), 0 0 0 0.5px rgba(0,0,0,1)"
-                : "0 16px 40px rgba(0,0,0,0.7), 0 0 0 0.5px rgba(0,0,0,1)",
+                ? "0 40px 80px rgba(0,0,0,0.6), 0 0 0 0.5px rgba(0,0,0,0.15)"
+                : "0 16px 40px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(0,0,0,0.1)",
               transition: "box-shadow 0.2s ease, border-color 0.2s ease",
+              backdropFilter: "var(--window-blur)",
+              WebkitBackdropFilter: "var(--window-blur)",
             }}
           >
             {/* Title Bar */}

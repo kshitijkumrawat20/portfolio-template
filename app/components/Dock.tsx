@@ -81,11 +81,11 @@ function DockIcon({
         aria-pressed={item.kind === "window" ? isOpen : undefined}
         style={{ width: size, height: size }}
         animate={{
-          background: isOpen ? "rgba(255,255,255,0.1)" : hovered ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.05)",
-          color: isOpen ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.5)",
+          background: isOpen ? "var(--dock-icon-hover)" : hovered ? "var(--dock-icon-hover)" : "var(--dock-icon-bg)",
+          color: isOpen ? "var(--dock-icon-active)" : "var(--dock-icon)",
         }}
         transition={{ duration: 0.15 }}
-        className="rounded-xl flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+        className="rounded-xl flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         whileTap={{ scale: 0.88 }}
         onClick={onActivate}
         onHoverStart={() => setHovered(true)}
