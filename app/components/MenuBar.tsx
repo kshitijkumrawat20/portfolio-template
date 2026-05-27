@@ -31,23 +31,23 @@ export default function MenuBar({ focusedApp }: { focusedApp: string | null }) {
       style={{ background: "var(--menubar-bg)", borderBottom: "1px solid var(--window-border-unfocused)" }}
     >
       <div className="flex items-center gap-3">
-        <span className="font-mono text-[11px] font-semibold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.9)" }}>
+        <span className="font-mono text-[11px] font-semibold uppercase tracking-widest" style={{ color: "var(--text-primary)" }}>
           CB
         </span>
-        <span style={{ color: "rgba(255,255,255,0.15)", fontSize: 10 }}>|</span>
-        <span className="font-mono text-[11px] tracking-wide" style={{ color: "rgba(255,255,255,0.4)" }}>
+        <span style={{ color: "var(--separator)", fontSize: 10 }}>|</span>
+        <span className="font-mono text-[11px] tracking-wide" style={{ color: "var(--text-secondary)" }}>
           {focusedApp ?? "Desktop"}
         </span>
       </div>
 
       <div className="flex items-center gap-4 font-mono text-[11px]">
         {visits !== null && (
-          <span style={{ color: "rgba(255,255,255,0.2)" }}>
+          <span style={{ color: "var(--text-muted)" }}>
             ↑ {visits.toLocaleString()}
           </span>
         )}
-        <span style={{ color: "rgba(255,255,255,0.35)" }}>{dateStr}</span>
-        <span style={{ color: "rgba(255,255,255,0.55)" }}>{timeStr}</span>
+        <span style={{ color: "var(--text-secondary)" }}>{dateStr}</span>
+        <span style={{ color: "var(--text-primary)" }}>{timeStr}</span>
       </div>
     </div>
   )

@@ -83,49 +83,48 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   personal: {
-    firstName: "Jane",
-    lastName: "Developer",
-    fullName: "Jane Developer",
-    initials: "JD",
-    role: "Software Engineer",
-    shortRole: "Full-Stack Software Engineer",
+    firstName: "Kshitij",
+    lastName: "Kumrawat",
+    fullName: "Kshitij Kumrawat",
+    initials: "KK",
+    role: "AI Engineer",
+    shortRole: "AI / ML Engineer",
     tagline:
-      "A short, opinionated sentence about what you build and why it matters. Keep it two sentences at most — this is the first thing visitors read.",
-    location: "Earth",
-    age: 20,
-    avatar: "/avatar.svg",
-    username: "janedeveloper",
+      "An innovative and results-driven AI/ML Engineer specializing in Generative AI, RAG, and Agentic AI frameworks like LangGraph. Adept at transforming complex challenges into scalable AI applications.",
+    location: "Indore, India",
+    age: 21,
+    avatar: "/profile3.png",
+    username: "kshitijkumrawat20",
   },
 
   social: {
-    github: "https://github.com/janedeveloper",
-    twitter: "https://x.com/janedeveloper",
-    blog: "https://example.com/blog",
-    githubUsername: "janedeveloper",
-    twitterHandle: "janedeveloper",
+    github: "https://github.com/kshitijkumrawat20",
+    twitter: "https://x.com/Kshitiz_K20",
+    blog: "https://www.linkedin.com/in/kshitij-kumrawat20/",
+    githubUsername: "kshitijkumrawat20",
+    twitterHandle: "Kshitiz_K20",
   },
 
   contact: {
-    email: "hello@example.com",
-    calendar: "https://cal.com/janedeveloper",
-    heading: "Let's Connect",
-    subheading: "Open to collaborations, freelance work, or just a conversation.",
+    email: "kshitijk146@gmail.com",
+    calendar: "https://www.linkedin.com/in/kshitij-kumrawat20/",
+    heading: "Get in Touch",
+    subheading: "Open to collaborations, full-time opportunities, or just a conversation.",
     rows: [
-      { icon: "mail",     href: "mailto:hello@example.com",             label: "Email",           mono: "hello@example.com" },
-      { icon: "calendar", href: "https://cal.com/janedeveloper",         label: "Schedule a call", mono: "cal.com/janedeveloper" },
-      { icon: "twitter",  href: "https://x.com/janedeveloper",           label: "X / Twitter",     mono: "@janedeveloper" },
-      { icon: "github",   href: "https://github.com/janedeveloper",      label: "GitHub",          mono: "janedeveloper" },
+      { icon: "mail",     href: "mailto:kshitijk146@gmail.com",                  label: "Email",           mono: "kshitijk146@gmail.com" },
+      { icon: "github",   href: "https://github.com/kshitijkumrawat20",            label: "GitHub",          mono: "kshitijkumrawat20" },
+      { icon: "twitter",  href: "https://x.com/Kshitiz_K20",                       label: "X / Twitter",     mono: "@Kshitiz_K20" },
     ],
   },
 
   seo: {
-    title: "Jane Developer — Portfolio",
-    description: "Personal portfolio and writing by Jane Developer.",
+    title: "Kshitij Kumrawat — Portfolio",
+    description: "Personal portfolio of Kshitij Kumrawat, AI Engineer specializing in Agentic AI, RAG, and Machine Learning.",
   },
 
-  resumeLink: "https://example.com/resume",
+  resumeLink: "https://drive.google.com/file/d/1FTgBvrelDV9dsk76-H-F4etktKyDxW3B/view?usp=drive_link",
 
   features: {
-    konami: false,
+    konami: true,
   },
 }

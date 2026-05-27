@@ -7,6 +7,7 @@ import Projects from "./sections/Projects"
 import Blogs from "./sections/Blogs"
 import Contact from "./sections/Contact"
 import Resume from "./sections/Resume"
+import AttentionVisualizer from "./sections/AttentionVisualizer"
 // Initials + footer name come from /config/siteConfig.ts.
 import { siteConfig } from "@/config/siteConfig"
 import type { PostMeta } from "@/lib/posts"
@@ -15,12 +16,13 @@ const NAV = [
   { id: "about",      label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects",   label: "Projects" },
+  { id: "attention",  label: "Attention" },
   { id: "writing",    label: "Writing" },
   { id: "contact",    label: "Contact" },
   { id: "resume",     label: "Résumé" },
 ]
 
-const BORDER = "1px solid rgba(255,255,255,0.07)"
+const BORDER = "1px solid var(--separator)"
 
 export default function MobileLayout({ posts }: { posts: PostMeta[] }) {
   const [time, setTime] = useState("")
@@ -59,18 +61,18 @@ export default function MobileLayout({ posts }: { posts: PostMeta[] }) {
   }
 
   return (
-    <div className="desktop-bg" style={{ minHeight: "100dvh", color: "#f0f0f0" }}>
+    <div className="desktop-bg" style={{ minHeight: "100dvh", color: "var(--foreground)" }}>
 
       {/* Status bar */}
       <header
         className="sticky top-0 z-50 flex items-center justify-between px-5"
-        style={{ height: 44, background: "rgba(11,11,11,0.96)", borderBottom: BORDER, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
+        style={{ height: 44, background: "var(--menubar-bg)", borderBottom: BORDER, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
       >
-        <span className="font-mono text-[11px] font-semibold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.9)" }}>
+        <span className="font-mono text-[11px] font-semibold uppercase tracking-widest" style={{ color: "var(--text-primary)" }}>
           {/* Initials — edit siteConfig.personal.initials */}
           {siteConfig.personal.initials}
         </span>
-        <span className="font-mono text-[11px]" style={{ color: "rgba(255,255,255,0.35)" }}>
+        <span className="font-mono text-[11px]" style={{ color: "var(--text-secondary)" }}>
           {time}
         </span>
       </header>
@@ -78,7 +80,7 @@ export default function MobileLayout({ posts }: { posts: PostMeta[] }) {
       {/* Section nav */}
       <nav
         className="sticky z-40 flex items-center gap-5 px-5 overflow-x-auto"
-        style={{ top: 44, height: 36, background: "rgba(11,11,11,0.96)", borderBottom: BORDER, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", scrollbarWidth: "none", overscrollBehaviorX: "contain" }}
+        style={{ top: 44, height: 36, background: "var(--menubar-bg)", borderBottom: BORDER, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", scrollbarWidth: "none", overscrollBehaviorX: "contain" }}
       >
         {NAV.map(({ id, label }) => (
           <button
@@ -86,8 +88,8 @@ export default function MobileLayout({ posts }: { posts: PostMeta[] }) {
             onClick={() => scrollTo(id)}
             className="font-mono text-[10px] uppercase tracking-widest whitespace-nowrap transition-colors pb-px"
             style={{
-              color: activeId === id ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.28)",
-              borderBottom: activeId === id ? "1px solid rgba(255,255,255,0.5)" : "1px solid transparent",
+              color: activeId === id ? "var(--text-primary)" : "var(--text-muted)",
+              borderBottom: activeId === id ? "1px solid var(--accent)" : "1px solid transparent",
             }}
           >
             {label}
@@ -108,6 +110,10 @@ export default function MobileLayout({ posts }: { posts: PostMeta[] }) {
         <Projects compact />
       </section>
 
+      <section id="attention" style={{ borderBottom: BORDER }}>
+        <AttentionVisualizer compact />
+      </section>
+
       <section id="writing" style={{ borderBottom: BORDER }}>
         <Blogs compact posts={posts} />
       </section>
@@ -122,7 +128,7 @@ export default function MobileLayout({ posts }: { posts: PostMeta[] }) {
 
       {/* Footer — edit siteConfig.personal.fullName */}
       <footer className="px-6 py-8 text-center">
-        <p className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.18)" }}>
+        <p className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "var(--text-faint)" }}>
           {siteConfig.personal.fullName} · {new Date().getFullYear()}
         </p>
       </footer>

@@ -24,42 +24,39 @@ export const uses: UseGroup[] = [
   {
     category: "Hardware",
     items: [
-      { name: "MacBook Pro", note: "primary machine" },
-      { name: "External 4K Monitor" },
-      { name: "Mechanical Keyboard" },
-      { name: "Noise-cancelling Headphones" },
+      { name: "Development PC", note: "primary machine" },
+      { name: "NVIDIA GPU", note: "model training & inference" },
     ],
   },
   {
     category: "Editor",
     items: [
       { name: "VS Code", note: "daily driver" },
-      { name: "Neovim", note: "when I want a distraction" },
     ],
   },
   {
     category: "Terminal",
     items: [
-      { name: "iTerm2" },
-      { name: "zsh + Starship", note: "prompt" },
+      { name: "PowerShell / WSL" },
+      { name: "Git", note: "version control" },
     ],
   },
   {
-    category: "Tools",
+    category: "AI Tools",
     items: [
-      { name: "Raycast", note: "launcher" },
-      { name: "Linear", note: "project tracking" },
-      { name: "Notion", note: "docs" },
-      { name: "Figma", note: "UI work" },
+      { name: "LangChain", note: "agentic workflows" },
+      { name: "LangGraph", note: "multi-agent systems" },
+      { name: "MLflow / DagsHub", note: "model lifecycle" },
     ],
   },
   {
     category: "Stack defaults",
     items: [
-      { name: "TypeScript" },
-      { name: "Next.js", note: "web" },
-      { name: "PostgreSQL", note: "data" },
-      { name: "Vercel", note: "deploy" },
+      { name: "Python" },
+      { name: "FastAPI", note: "backend APIs" },
+      { name: "Streamlit", note: "AI apps UI" },
+      { name: "Docker", note: "containerization" },
+      { name: "AWS", note: "cloud deployment" },
     ],
   },
 ]

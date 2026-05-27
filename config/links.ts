@@ -16,9 +16,9 @@ export interface LinkItem {
 }
 
 export const links: LinkItem[] = [
-  { title: "The Zen of Erlang",      author: "Fred Hebert",     url: "https://ferd.ca/the-zen-of-erlang.html",                  tag: "systems" },
-  { title: "Fearless Concurrency",   author: "The Rust Book",   url: "https://doc.rust-lang.org/book/ch16-00-concurrency.html", tag: "rust" },
-  { title: "without.boats",          author: "withoutboats",    url: "https://without.boats",                                   tag: "rust" },
-  { title: "Meditations",            author: "Marcus Aurelius", url: "https://www.gutenberg.org/ebooks/2680",                   tag: "philosophy" },
-  { title: "Solana Program Library", author: "Solana Labs",     url: "https://spl.solana.com",                                  tag: "solana" },
+  { title: "Attention Is All You Need",      author: "Vaswani et al.",    url: "https://arxiv.org/abs/1706.03762",                  tag: "transformers" },
+  { title: "Deep Residual Learning",         author: "He et al. (ResNet)", url: "https://arxiv.org/abs/1512.03385",                  tag: "deep-learning" },
+  { title: "Retrieval-Augmented Generation", author: "Lewis et al. (RAG)", url: "https://arxiv.org/abs/2005.11401",                  tag: "rag" },
+  { title: "Llama 3 Model Card",             author: "Meta AI",           url: "https://github.com/meta-llama/llama3",              tag: "llms" },
+  { title: "LangGraph: Multi-Agent Flows",   author: "LangChain Team",    url: "https://langchain-ai.github.io/langgraph/",         tag: "agents" },
 ]

@@ -132,14 +132,14 @@ export default function MacWindow({
                   aria-label={`Close ${title}`}
                   className="w-2.5 h-2.5 rounded-full flex-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--titlebar-bg)]"
                   style={{
-                    background: isFocused ? "#ff5f57" : "rgba(255,255,255,0.12)",
+                    background: isFocused ? "#ff5f56" : "rgba(255,255,255,0.15)",
                     transition: "background 0.15s",
                   }}
                   onClick={(e) => { e.stopPropagation(); onClose() }}
                   onPointerDown={(e) => e.stopPropagation()}
                 />
-                <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.08)" }} />
-                <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.08)" }} />
+                <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full" style={{ background: isFocused ? "#ffbd2e" : "rgba(255,255,255,0.1)", transition: "background 0.15s" }} />
+                <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full" style={{ background: isFocused ? "#27c93f" : "rgba(255,255,255,0.1)", transition: "background 0.15s" }} />
               </div>
 
               {/* Title — rendered as h2 for correct heading semantics. */}

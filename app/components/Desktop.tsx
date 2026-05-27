@@ -189,21 +189,21 @@ export default function Desktop({ posts }: { posts: PostMeta[] }) {
               transition={{ type: "spring", damping: 28, stiffness: 380 }}
               className="px-8 py-7 text-center"
               style={{
-                background: "#111",
-                border: "1px solid rgba(255,255,255,0.1)",
+                background: "var(--window-bg)",
+                border: "1px solid var(--widget-border)",
                 borderRadius: 12,
                 width: 320,
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.14em] mb-4" style={{ color: "rgba(255,255,255,0.3)" }}>
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] mb-4" style={{ color: "var(--text-muted)" }}>
                 About this Portfolio
               </p>
-              <h2 id="about-overlay-title" className="text-[22px] font-semibold text-white mb-1">macOS Portfolio</h2>
-              <p className="font-mono text-[11px] mb-5" style={{ color: "rgba(255,255,255,0.35)" }}>Version 1.0.0</p>
+              <h2 id="about-overlay-title" className="text-[22px] font-semibold text-[var(--text-primary)] mb-1">macOS Portfolio</h2>
+              <p className="font-mono text-[11px] mb-5" style={{ color: "var(--text-muted)" }}>Version 1.0.0</p>
               <div
                 className="text-left space-y-2 py-4 mb-5"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ borderTop: "1px solid var(--separator)", borderBottom: "1px solid var(--separator)" }}
               >
                 {[
                   ["Runtime",    "Next.js 15 · React 19"],
@@ -214,17 +214,17 @@ export default function Desktop({ posts }: { posts: PostMeta[] }) {
                   ["Deployed",   "Vercel Edge Network"],
                 ].map(([k, v]) => (
                   <div key={k} className="flex justify-between">
-                    <span className="font-mono text-[10px]" style={{ color: "rgba(255,255,255,0.25)" }}>{k}</span>
-                    <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.55)" }}>{v}</span>
+                    <span className="font-mono text-[10px]" style={{ color: "var(--text-muted)" }}>{k}</span>
+                    <span className="text-[11px]" style={{ color: "var(--text-secondary)" }}>{v}</span>
                   </div>
                 ))}
               </div>
               <button
                 type="button"
-                className="font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
-                style={{ background: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.08)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.07)")}
+                className="font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded transition-colors focus:outline-none"
+                style={{ background: "var(--drag-handle-bg)", color: "var(--text-secondary)", border: "1px solid var(--widget-border)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--item-separator)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "var(--drag-handle-bg)")}
                 onClick={() => setShowAboutOverlay(false)}
               >
                 Close
@@ -250,16 +250,16 @@ export default function Desktop({ posts }: { posts: PostMeta[] }) {
               transition={{ type: "spring", damping: 20, stiffness: 300 }}
               className="text-center px-10 py-8"
               style={{
-                background: "#111",
-                border: "1px solid rgba(255,255,255,0.12)",
+                background: "var(--window-bg)",
+                border: "1px solid var(--widget-border)",
                 borderRadius: 12,
               }}
             >
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] mb-3" style={{ color: "rgba(255,255,255,0.3)" }}>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] mb-3" style={{ color: "var(--text-muted)" }}>
                 ✦ Cheat Code Activated ✦
               </p>
-              <p className="text-[28px] font-semibold text-white mb-2">+99 Engineering Credits</p>
-              <p className="font-mono text-[11px]" style={{ color: "rgba(255,255,255,0.3)" }}>
+              <p className="text-[28px] font-semibold text-[var(--text-primary)] mb-2">+99 Engineering Credits</p>
+              <p className="font-mono text-[11px]" style={{ color: "var(--text-muted)" }}>
                 Hello, fellow human of culture.
               </p>
             </motion.div>

@@ -5,7 +5,7 @@ import { ExternalLink, MapPin, Mail, Github, Twitter } from "lucide-react"
 // Résumé content is split across a few config modules — each maps 1:1 to a section below.
 import { siteConfig } from "@/config/siteConfig"
 import { skills } from "@/config/skills"
-import { resumeExperience as experience, education, teaching } from "@/config/experience"
+import { resumeExperience as experience, education, certifications } from "@/config/experience"
 import { resumeProjects as projects } from "@/config/projects"
 
 export default function Resume({ compact = false }: { compact?: boolean }) {
@@ -195,16 +195,16 @@ export default function Resume({ compact = false }: { compact?: boolean }) {
 
         <div style={{ height: "1px", background: "var(--separator)" }} />
 
-        {/* Teaching */}
+        {/* Certifications */}
         <section>
           <h2
             className="text-[11px] font-semibold uppercase tracking-widest mb-3"
             style={{ color: "var(--text-secondary)" }}
           >
-            Teaching
+            Certifications
           </h2>
           <ul className="space-y-1 pl-3">
-            {teaching.map((t, i) => (
+            {certifications.map((t, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span
                   className="mt-[6px] w-1 h-1 rounded-full flex-none"

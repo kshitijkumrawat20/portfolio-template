@@ -23,10 +23,10 @@ export interface StatusConfig {
 
 export const status: StatusConfig = {
   available: true,
-  label: "Open to work",
+  label: "Available for work",
   currently: [
-    { label: "Building", value: "Something you're excited about" },
-    { label: "Reading",  value: "A book that's changed how you think" },
-    { label: "Writing",  value: "Your next blog post" },
+    { label: "Building", value: "Conversational AI agents & RAG pipelines" },
+    { label: "Exploring",  value: "The frontier of LLMs & autonomous systems" },
+    { label: "Learning",   value: "Advanced multi-agent framework concepts" },
   ],
 }

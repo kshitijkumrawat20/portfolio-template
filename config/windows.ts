@@ -17,20 +17,21 @@
 
 import {
   User, Briefcase, Code2, BookOpen, Mail,
-  ScrollText, TerminalSquare, Cpu, NotebookPen,
+  ScrollText, TerminalSquare, Cpu, NotebookPen, Brain,
   type LucideIcon,
 } from "lucide-react"
 import type { PostMeta } from "@/lib/posts"
 
-import Hero       from "@/app/components/Hero"
-import Experience from "@/app/components/sections/Experience"
-import Projects   from "@/app/components/sections/Projects"
-import Blogs      from "@/app/components/sections/Blogs"
-import Contact    from "@/app/components/sections/Contact"
-import Resume     from "@/app/components/sections/Resume"
-import Terminal   from "@/app/components/sections/Terminal"
-import Uses       from "@/app/components/sections/Uses"
-import Notes      from "@/app/components/sections/Notes"
+import Hero                from "@/app/components/Hero"
+import Experience          from "@/app/components/sections/Experience"
+import Projects            from "@/app/components/sections/Projects"
+import Blogs               from "@/app/components/sections/Blogs"
+import Contact             from "@/app/components/sections/Contact"
+import Resume              from "@/app/components/sections/Resume"
+import Terminal            from "@/app/components/sections/Terminal"
+import Uses                from "@/app/components/sections/Uses"
+import Notes               from "@/app/components/sections/Notes"
+import AttentionVisualizer from "@/app/components/sections/AttentionVisualizer"
 
 /** Extra data threaded from the server into a window (e.g. blog posts). */
 export interface WindowContext {
@@ -42,7 +43,7 @@ export interface WindowContext {
 // One union of valid window ids keeps the rest of the app typo-safe.
 export type WindowId =
   | "about" | "experience" | "projects" | "blogs" | "contact"
-  | "resume" | "terminal" | "uses" | "notes"
+  | "resume" | "terminal" | "uses" | "notes" | "attention"
 
 export interface WindowDef {
   id: WindowId
@@ -63,7 +64,7 @@ export interface WindowDef {
 }
 
 export const windows: WindowDef[] = [
-  { id: "about",      title: "About",      icon: User,           width: 560, height: 480, offsetX:   0, offsetY: -20, component: Hero },
+  { id: "about",      title: "About",      icon: User,           width: 620, height: 520, offsetX:   0, offsetY: -20, component: Hero },
   { id: "experience", title: "Experience", icon: Briefcase,      width: 680, height: 570, offsetX:  20, offsetY:  20, component: Experience },
   { id: "projects",   title: "Projects",   icon: Code2,          width: 720, height: 570, offsetX: -20, offsetY:  10, component: Projects },
   { id: "blogs",      title: "Blogs",      icon: BookOpen,       width: 660, height: 550, offsetX:  10, offsetY: -10, component: Blogs },
@@ -72,6 +73,7 @@ export const windows: WindowDef[] = [
   { id: "terminal",   title: "Terminal",   icon: TerminalSquare, width: 600, height: 460, offsetX: -30, offsetY:  15, component: Terminal },
   { id: "uses",       title: "Uses",       icon: Cpu,            width: 520, height: 500, offsetX:  40, offsetY: -30, component: Uses },
   { id: "notes",      title: "Notes",      icon: NotebookPen,    width: 500, height: 480, offsetX: -40, offsetY: -25, component: Notes },
+  { id: "attention",  title: "Attention",  icon: Brain,          width: 620, height: 530, offsetX:  50, offsetY: -15, component: AttentionVisualizer },
 ]
 
 /** Helper used by the Desktop to look up a window by id. */

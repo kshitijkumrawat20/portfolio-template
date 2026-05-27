@@ -5,17 +5,15 @@ import { ArrowUpRight, Star } from "lucide-react"
 import { motion } from "framer-motion"
 // Project lists live in /config/projects.ts.
 import { projects, type ProjectItem } from "@/config/projects"
+import ProjectModal from "../modals/ProjectModal"
 
-function ProjectList({ projects }: { projects: ProjectItem[] }) {
+function ProjectList({ projects, onSelect }: { projects: ProjectItem[]; onSelect: (p: ProjectItem) => void }) {
   return (
     <div>
       {projects.map((p, i) => (
-        <motion.a
+        <motion.div
           key={i}
-          href={p.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-start justify-between gap-4 py-4"
+          className="group flex items-start justify-between gap-4 py-4 cursor-pointer"
           style={{
             borderTop: i === 0 ? "1px solid var(--separator)" : undefined,
             borderBottom: "1px solid var(--separator)",
@@ -23,6 +21,7 @@ function ProjectList({ projects }: { projects: ProjectItem[] }) {
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.04 }}
+          onClick={() => onSelect(p)}
         >
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1.5">
@@ -60,9 +59,9 @@ function ProjectList({ projects }: { projects: ProjectItem[] }) {
           <ArrowUpRight
             size={14}
             className="flex-none mt-0.5 opacity-0 group-hover:opacity-60 transition-opacity"
-            style={{ color: "white" }}
+            style={{ color: "var(--text-primary)" }}
           />
-        </motion.a>
+        </motion.div>
       ))}
     </div>
   )
@@ -70,47 +69,58 @@ function ProjectList({ projects }: { projects: ProjectItem[] }) {
 
 export default function Projects({ compact = false }: { compact?: boolean }) {
   const [tab, setTab] = useState<"personal" | "client">("personal")
+  const [selected, setSelected] = useState<ProjectItem | null>(null)
   const { personal: personalProjects, client: clientProjects } = projects
 
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className={compact ? "px-6 py-6" : "py-20 px-6"}
-    >
-      <p
-        className="font-mono text-[10px] uppercase tracking-[0.14em] mb-5"
-        style={{ color: "var(--text-muted)" }}
+    <>
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className={compact ? "px-6 py-6" : "py-20 px-6"}
       >
-        Projects
-      </p>
+        <p
+          className="font-mono text-[10px] uppercase tracking-[0.14em] mb-5"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Projects
+        </p>
 
-      {/* Tabs */}
-      <div
-        className="flex gap-5 mb-5"
-        style={{ borderBottom: "1px solid var(--separator)" }}
-      >
-        {(["personal", "client"] as const).map((t) => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            className="font-mono text-[10px] uppercase tracking-[0.1em] pb-2 transition-colors"
-            style={{
-              color: tab === t ? "var(--text-primary)" : "var(--text-muted)",
-              borderBottom: tab === t ? "1px solid var(--accent)" : "1px solid transparent",
-              marginBottom: -1,
-            }}
+        {/* Tabs */}
+        {clientProjects.length > 0 && (
+          <div
+            className="flex gap-5 mb-5"
+            style={{ borderBottom: "1px solid var(--separator)" }}
           >
-            {t === "personal" ? "Personal" : "Client Work"}
-          </button>
-        ))}
-      </div>
+            {(["personal", "client"] as const).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className="font-mono text-[10px] uppercase tracking-[0.1em] pb-2 transition-colors"
+                style={{
+                  color: tab === t ? "var(--text-primary)" : "var(--text-muted)",
+                  borderBottom: tab === t ? "1px solid var(--accent)" : "1px solid transparent",
+                  marginBottom: -1,
+                }}
+              >
+                {t === "personal" ? "Personal" : "Client Work"}
+              </button>
+            ))}
+          </div>
+        )}
 
-      {tab === "personal" ? (
-        <ProjectList projects={personalProjects} />
-      ) : (
-        <ProjectList projects={clientProjects} />
-      )}
-    </motion.section>
+        {tab === "personal" ? (
+          <ProjectList projects={personalProjects} onSelect={setSelected} />
+        ) : (
+          <ProjectList projects={clientProjects} onSelect={setSelected} />
+        )}
+      </motion.section>
+
+      <ProjectModal
+        project={selected}
+        isOpen={!!selected}
+        onClose={() => setSelected(null)}
+      />
+    </>
   )
 }

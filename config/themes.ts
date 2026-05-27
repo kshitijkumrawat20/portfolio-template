@@ -18,7 +18,7 @@
  * ─────────────────────────────────────────────────────────────
  */
 
-export type ThemeKey = "midnight" | "amber" | "crimson" | "rust"
+export type ThemeKey = "midnight" | "amber" | "crimson" | "rust" | "macos"
 
 export interface ThemeItem {
   key: ThemeKey
@@ -60,5 +60,12 @@ export const themes: ThemeItem[] = [
     description: "Rust · burnt orange",
     accentColor: "rgba(255,120,35,0.9)",
     gradient: "linear-gradient(150deg, #120600 0%, #3d1800 50%, #e66b1f 100%)",
+  },
+  {
+    key: "macos",
+    label: "macOS",
+    description: "macOS · light dynamic desktop",
+    accentColor: "rgba(0,122,255,0.95)",
+    gradient: "linear-gradient(150deg, #5ea3ec 0%, #f75590 45%, #f27c38 80%, #ffd043 100%)",
   },
 ]
