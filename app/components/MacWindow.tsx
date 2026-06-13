@@ -107,6 +107,7 @@ export default function MacWindow({
             style={{
               height: `min(${height}px, calc(100vh - 72px))`,
               borderRadius: 8,
+              background: "var(--window-bg)",
               border: isFocused
                 ? "1px solid var(--window-border-focused)"
                 : "1px solid var(--window-border-unfocused)",
@@ -122,8 +123,8 @@ export default function MacWindow({
             <div
               className="flex-none flex items-center h-9 px-3 relative select-none cursor-grab active:cursor-grabbing"
               style={{
-                background: "var(--titlebar-bg)",
-                borderBottom: "1px solid var(--window-border-unfocused)",
+                background: "transparent",
+                borderBottom: "1px solid var(--item-separator)",
               }}
               onPointerDown={(e) => dragControls.start(e)}
             >
@@ -149,7 +150,7 @@ export default function MacWindow({
                 id={titleId}
                 className="absolute left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.1em] pointer-events-none m-0 font-normal"
                 style={{
-                  color: isFocused ? "rgba(255,255,255,0.45)" : "rgba(255,255,255,0.2)",
+                  color: isFocused ? "var(--text-secondary)" : "var(--text-faint)",
                   transition: "color 0.2s",
                 }}
               >
@@ -160,7 +161,7 @@ export default function MacWindow({
             {/* Content */}
             <div
               className="flex-1 overflow-y-auto overflow-x-hidden mac-scrollbar"
-              style={{ background: "var(--window-bg)" }}
+              style={{ background: "transparent" }}
             >
               {children}
             </div>

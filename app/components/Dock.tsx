@@ -14,6 +14,39 @@ function XIcon({ size = 20 }: { size?: number }) {
   )
 }
 
+const getAppIcon = (id: string, IconComponent: React.ReactNode) => {
+  const styles: Record<string, { bg: string; color: string; border?: string }> = {
+    about: { bg: "linear-gradient(135deg, #1aa3ff 0%, #0066cc 100%)", color: "#ffffff" },
+    experience: { bg: "linear-gradient(135deg, #ff9f0a 0%, #ff3b30 100%)", color: "#ffffff" },
+    projects: { bg: "linear-gradient(135deg, #34c759 0%, #00a33c 100%)", color: "#ffffff" },
+    blogs: { bg: "linear-gradient(135deg, #af52de 0%, #5856d6 100%)", color: "#ffffff" },
+    contact: { bg: "linear-gradient(135deg, #ff2d55 0%, #ff3b30 100%)", color: "#ffffff" },
+    resume: { bg: "linear-gradient(135deg, #ffffff 0%, #f2f2f7 100%)", color: "#007aff", border: "1px solid rgba(0,0,0,0.06)" },
+    terminal: { bg: "linear-gradient(135deg, #1c1c1e 0%, #000000 100%)", color: "#30d158", border: "1px solid rgba(255,255,255,0.08)" },
+    uses: { bg: "linear-gradient(135deg, #8e8e93 0%, #636366 100%)", color: "#ffffff" },
+    notes: { bg: "linear-gradient(135deg, #ffcc00 0%, #ff9500 100%)", color: "#ffffff" },
+    attention: { bg: "linear-gradient(135deg, #24292f 0%, #bf5af2 100%)", color: "#ffffff" },
+    github: { bg: "linear-gradient(135deg, #24292f 0%, #0f1115 100%)", color: "#ffffff" },
+    twitter: { bg: "linear-gradient(135deg, #15202b 0%, #10171e 100%)", color: "#1d9bf0" },
+  }
+
+  const style = styles[id] || { bg: "linear-gradient(135deg, #007aff 0%, #0056b3 100%)", color: "#ffffff" }
+
+  return (
+    <div 
+      className="w-full h-full rounded-[24%] flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.2)]"
+      style={{ 
+        background: style.bg, 
+        color: style.color,
+        border: style.border || "none",
+        padding: "18%"
+      }}
+    >
+      {IconComponent}
+    </div>
+  )
+}
+
 type DockItem =
   | { kind: "window"; id: string; label: string; icon: React.ReactNode }
   | { kind: "link"; id: string; label: string; icon: React.ReactNode; url: string }
@@ -22,12 +55,51 @@ const dockApps: DockItem[] = windows.map((w) => ({
   kind: "window",
   id: w.id,
   label: w.title,
-  icon: <w.icon size={22} strokeWidth={1.5} aria-hidden="true" />,
+  icon: (
+    <>
+      <span className="dock-icon-default flex items-center justify-center w-full h-full">
+        <w.icon size={22} strokeWidth={1.5} aria-hidden="true" />
+      </span>
+      <span className="dock-icon-macos hidden w-full h-full">
+        {getAppIcon(w.id, <w.icon size={18} strokeWidth={2.0} aria-hidden="true" />)}
+      </span>
+    </>
+  ),
 }))
 
 const dockLinks: DockItem[] = [
-  { kind: "link", id: "github",  label: "GitHub", icon: <Github size={20} strokeWidth={1.5} aria-hidden="true" />, url: siteConfig.social.github },
-  { kind: "link", id: "twitter", label: "X",      icon: <XIcon size={18} />,                                        url: siteConfig.social.twitter },
+  {
+    kind: "link",
+    id: "github",
+    label: "GitHub",
+    icon: (
+      <>
+        <span className="dock-icon-default flex items-center justify-center w-full h-full">
+          <Github size={20} strokeWidth={1.5} aria-hidden="true" />
+        </span>
+        <span className="dock-icon-macos hidden w-full h-full">
+          {getAppIcon("github", <Github size={18} strokeWidth={2.0} aria-hidden="true" />)}
+        </span>
+      </>
+    ),
+    url: siteConfig.social.github,
+  },
+  {
+    kind: "link",
+    id: "twitter",
+    label: "X",
+    icon: (
+      <>
+        <span className="dock-icon-default flex items-center justify-center w-full h-full">
+          <XIcon size={18} />
+        </span>
+        <span className="dock-icon-macos hidden w-full h-full">
+          {getAppIcon("twitter", <XIcon size={16} />)}
+        </span>
+      </>
+    ),
+    url: siteConfig.social.twitter,
+  },
 ]
 
 function DockIcon({
@@ -81,7 +153,7 @@ function DockIcon({
         aria-pressed={item.kind === "window" ? isOpen : undefined}
         style={{ width: size, height: size }}
         animate={{
-          background: isOpen ? "var(--dock-icon-hover)" : hovered ? "var(--dock-icon-hover)" : "var(--dock-icon-bg)",
+          background: isOpen ? "var(--dock-btn-open)" : hovered ? "var(--dock-btn-hover)" : "var(--dock-btn-bg)",
           color: isOpen ? "var(--dock-icon-active)" : "var(--dock-icon)",
         }}
         transition={{ duration: 0.15 }}

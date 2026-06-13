@@ -44,6 +44,11 @@
   --dock-icon-active: rgba(255, 255, 255, 0.95);
   --dock-icon-hover: rgba(255, 255, 255, 0.12);
   --dock-icon-bg: rgba(255, 255, 255, 0.05);
+
+  /* dock button variables */
+  --dock-btn-bg: rgba(255, 255, 255, 0.05);
+  --dock-btn-hover: rgba(255, 255, 255, 0.08);
+  --dock-btn-open: rgba(255, 255, 255, 0.1);
 }
 
 /* ── Amber — deep violet night with warm amber horizon ────────────────────── */
@@ -130,158 +135,57 @@
   --text-faint: rgba(255,165,80,0.2);
 }
 
-/* ── macOS — macOS Light dynamic theme ───────────────────────── */
+/* ── macOS — macOS Dark dynamic theme ───────────────────────── */
 [data-theme="macos"] {
-  --background: #f5f5f7;
-  --foreground: #1d1d1f;
-  --text-primary: rgba(29, 29, 31, 0.9);
-  --text-secondary: rgba(29, 29, 31, 0.65);
-  --text-muted: rgba(29, 29, 31, 0.45);
-  --text-faint: rgba(29, 29, 31, 0.3);
+  --background: #0f0f11;
+  --foreground: #f5f5f7;
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.68);
+  --text-muted: rgba(255, 255, 255, 0.48);
+  --text-faint: rgba(255, 255, 255, 0.35);
 
-  --bg-base: #f5f5f7;
-  --bg-dot: rgba(0, 0, 0, 0.04);
-  --titlebar-bg: rgba(236, 236, 238, 0.45);
-  --window-bg: rgba(255, 255, 255, 0.3);
+  --bg-base: #0f0f11;
+  --bg-dot: rgba(255, 255, 255, 0.05);
+  --titlebar-bg: rgba(30, 30, 30, 0.85);
+  --window-bg: rgba(28, 28, 30, 0.72);
   --terminal-bg: #1c1c1e;
-  --menubar-bg: rgba(255, 255, 255, 0.65);
-  --window-border-focused: rgba(255, 255, 255, 0.5);
-  --window-border-unfocused: rgba(255, 255, 255, 0.3);
+  --menubar-bg: rgba(20, 20, 20, 0.75);
+  --window-border-focused: rgba(255, 255, 255, 0.15);
+  --window-border-unfocused: rgba(255, 255, 255, 0.08);
 
-  --widget-bg: rgba(255, 255, 255, 0.35);
-  --widget-border: rgba(255, 255, 255, 0.45);
-  --drag-handle-bg: rgba(0, 0, 0, 0.015);
-  --item-separator: rgba(0, 0, 0, 0.03);
-  --dock-bg: rgba(255, 255, 255, 0.25);
-  --tooltip-bg: rgba(255, 255, 255, 0.95);
+  --widget-bg: rgba(28, 28, 30, 0.7);
+  --widget-border: rgba(255, 255, 255, 0.1);
+  --drag-handle-bg: rgba(255, 255, 255, 0.03);
+  --item-separator: rgba(255, 255, 255, 0.05);
+  --dock-bg: rgba(28, 28, 30, 0.5);
+  --tooltip-bg: rgba(28, 28, 30, 0.96);
 
-  --accent: #007aff;
-  --accent-subtle: rgba(0, 122, 255, 0.09);
-  --heatmap-empty: rgba(0, 0, 0, 0.05);
-  --separator: rgba(0, 0, 0, 0.07);
+  --accent: #0a84ff;
+  --accent-subtle: rgba(10, 132, 255, 0.15);
+  --heatmap-empty: rgba(255, 255, 255, 0.06);
+  --separator: rgba(255, 255, 255, 0.08);
 
   /* window glass blur */
-  --window-blur: blur(25px) saturate(1.8);
+  --window-blur: blur(28px) saturate(1.9);
 
-  /* dock icons (dark themed for light mode) */
-  --dock-icon: rgba(0, 0, 0, 0.65);
-  --dock-icon-active: rgba(0, 0, 0, 0.9);
-  --dock-icon-hover: rgba(0, 0, 0, 0.08);
-  --dock-icon-bg: rgba(0, 0, 0, 0.03);
-}
+  /* dock icons (light themed for dark mode) */
+  --dock-icon: rgba(255, 255, 255, 0.65);
+  --dock-icon-active: rgba(255, 255, 255, 0.95);
+  --dock-icon-hover: rgba(255, 255, 255, 0.08);
+  --dock-icon-bg: rgba(255, 255, 255, 0.03);
 
-/* Light mode overrides for tailwind text-white classes */
-[data-theme="macos"] .text-white {
-  color: var(--text-primary) !important;
-}
-[data-theme="macos"] .text-white\/95 {
-  color: rgba(29, 29, 31, 0.95) !important;
-}
-[data-theme="macos"] .text-white\/90 {
-  color: rgba(29, 29, 31, 0.9) !important;
-}
-[data-theme="macos"] .text-white\/85 {
-  color: rgba(29, 29, 31, 0.85) !important;
-}
-[data-theme="macos"] .text-white\/80 {
-  color: rgba(29, 29, 31, 0.8) !important;
-}
-[data-theme="macos"] .text-white\/75 {
-  color: rgba(29, 29, 31, 0.75) !important;
-}
-[data-theme="macos"] .text-white\/70 {
-  color: rgba(29, 29, 31, 0.7) !important;
-}
-[data-theme="macos"] .text-white\/50 {
-  color: rgba(29, 29, 31, 0.5) !important;
-}
-[data-theme="macos"] .text-white\/40 {
-  color: rgba(29, 29, 31, 0.4) !important;
-}
-[data-theme="macos"] .text-white\/30 {
-  color: rgba(29, 29, 31, 0.3) !important;
-}
-[data-theme="macos"] .hover\:text-white:hover {
-  color: var(--text-primary) !important;
-}
-[data-theme="macos"] .group:hover .group-hover\:text-white {
-  color: var(--text-primary) !important;
-}
-[data-theme="macos"] .group:hover .group-hover\:text-white\/75 {
-  color: rgba(29, 29, 31, 0.75) !important;
-}
-[data-theme="macos"] .group:hover .group-hover\:text-white\/80 {
-  color: rgba(29, 29, 31, 0.8) !important;
-}
-[data-theme="macos"] .group:hover .group-hover\:text-white\/50 {
-  color: rgba(29, 29, 31, 0.5) !important;
-}
-
-/* Ensure window titles in title bar are legible */
-[data-theme="macos"] h2[id^="window-title-"] {
-  color: rgba(29, 29, 31, 0.6) !important;
-}
-[data-theme="macos"] [data-mac-window] h2 {
-  color: rgba(29, 29, 31, 0.6) !important;
+  /* dock buttons (transparent in macos theme to show colorful squircles) */
+  --dock-btn-bg: transparent;
+  --dock-btn-hover: transparent;
+  --dock-btn-open: transparent;
 }
 
 /* Scrollbar overrides */
 [data-theme="macos"] .mac-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
 }
 [data-theme="macos"] .mac-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25) !important;
-}
-
-/* Maintain dark theme elements inside the Attention Visualizer for contrast */
-[data-theme="macos"] .attention-visualizer {
-  --text-primary: rgba(255, 255, 255, 0.9) !important;
-  --text-secondary: rgba(255, 255, 255, 0.7) !important;
-  --text-muted: rgba(255, 255, 255, 0.45) !important;
-  --text-faint: rgba(255, 255, 255, 0.3) !important;
-}
-[data-theme="macos"] .attention-visualizer .text-white {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-[data-theme="macos"] .attention-visualizer .text-white\/50 {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-[data-theme="macos"] .attention-visualizer input {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* Restore terminal text to original white/light styles in light mode */
-[data-theme="macos"] div[style*="var(--terminal-bg)"] * {
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-[data-theme="macos"] div[style*="var(--terminal-bg)"] input {
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-[data-theme="macos"] div[style*="var(--terminal-bg)"] .whitespace-pre-wrap {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-[data-theme="macos"] div[style*="var(--terminal-bg)"] div[style*="rgba(255,255,255,0.85)"] {
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-[data-theme="macos"] div[style*="var(--terminal-bg)"] div[style*="rgba(255,100,100,0.8)"] {
-  color: rgba(255, 100, 100, 0.8) !important;
-}
-[data-theme="macos"] div[style*="var(--terminal-bg)"] div[style*="rgba(255,255,255,0.35)"] {
-  color: rgba(255, 255, 255, 0.35) !important;
-}
-[data-theme="macos"] div[style*="var(--terminal-bg)"] div[style*="rgba(255,255,255,0.5)"] {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-[data-theme="macos"] div[style*="var(--terminal-bg)"] span[style*="rgba(255,255,255,0.4)"] {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Fix link and button bg in Hero on hover in light mode */
-[data-theme="macos"] a[href*="drive.google.com"] {
-  background: rgba(0, 0, 0, 0.03) !important;
-}
-[data-theme="macos"] a[href*="drive.google.com"]:hover {
-  background: rgba(0, 0, 0, 0.07) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
 }
 
 @theme inline {
@@ -340,11 +244,14 @@ body::after {
 }
 [data-theme="macos"] .album-wallpaper {
   background: 
-    radial-gradient(circle at 100% 0%, #136cfa 0%, transparent 65%),
-    radial-gradient(circle at 0% 100%, #5ea3ec 0%, transparent 70%),
-    radial-gradient(circle at 10% 20%, #004ac2 0%, transparent 55%),
-    #e2edfa;
+    radial-gradient(circle at 5% 30%, rgba(135, 25, 120, 0.65) 0%, transparent 55%),
+    radial-gradient(circle at 95% 85%, rgba(200, 80, 20, 0.55) 0%, transparent 45%),
+    radial-gradient(circle at 80% 55%, rgba(150, 40, 10, 0.55) 0%, transparent 50%),
+    radial-gradient(circle at 15% 75%, rgba(120, 15, 60, 0.65) 0%, transparent 50%),
+    radial-gradient(circle at 95% 15%, rgba(10, 80, 200, 0.75) 0%, transparent 60%),
+    #050c26;
   opacity: 1;
+  filter: none !important;
 }
 
 /* Shared widget classes — avoids duplicating var() across every widget file */
@@ -385,3 +292,19 @@ body::after {
 .mac-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(255,255,255,0.18);
 }
+
+/* Dock icon conditional rendering based on active theme */
+.dock-icon-default {
+  display: flex !important;
+}
+.dock-icon-macos {
+  display: none !important;
+}
+
+[data-theme="macos"] .dock-icon-default {
+  display: none !important;
+}
+[data-theme="macos"] .dock-icon-macos {
+  display: flex !important;
+}
+

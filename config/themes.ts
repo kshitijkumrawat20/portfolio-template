@@ -64,8 +64,8 @@ export const themes: ThemeItem[] = [
   {
     key: "macos",
     label: "macOS",
-    description: "macOS · light dynamic desktop",
-    accentColor: "rgba(0,122,255,0.95)",
-    gradient: "linear-gradient(150deg, #5ea3ec 0%, #f75590 45%, #f27c38 80%, #ffd043 100%)",
+    description: "macOS · dark dynamic desktop",
+    accentColor: "rgba(10,132,255,0.95)",
+    gradient: "linear-gradient(150deg, #1d59d9 0%, #871978 40%, #c85014 80%, #050c26 100%)",
   },
 ]

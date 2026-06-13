@@ -51,24 +51,22 @@ export default function ThemeWidget() {
     >
       {/* Drag handle */}
       <div
-        className="flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className="flex items-center justify-center cursor-grab active:cursor-grabbing border-t border-l border-r border-b-0 border-[var(--widget-border)]"
         style={{
           height: 22,
-          background: "rgba(255,255,255,0.04)",
+          background: "var(--drag-handle-bg)",
           borderRadius: "8px 8px 0 0",
-          border: "1px solid rgba(255,255,255,0.07)",
-          borderBottom: "none",
         }}
         onPointerDown={(e) => dragControls.start(e)}
       >
-        <div style={{ width: 28, height: 3, borderRadius: 2, background: "rgba(255,255,255,0.12)" }} />
+        <div style={{ width: 28, height: 3, borderRadius: 2, background: "var(--separator)" }} />
       </div>
 
       {/* Widget body */}
       <div
+        className="border border-[var(--widget-border)]"
         style={{
-          background: "rgba(255,255,255,0.03)",
-          border: "1px solid rgba(255,255,255,0.07)",
+          background: "var(--widget-bg)",
           borderRadius: "0 0 8px 8px",
           padding: "10px 12px 12px",
         }}
@@ -77,13 +75,13 @@ export default function ThemeWidget() {
         <div className="flex items-center justify-between mb-3">
           <span
             className="font-mono text-[9px] uppercase tracking-[0.14em]"
-            style={{ color: "rgba(255,255,255,0.25)" }}
+            style={{ color: "var(--text-muted)" }}
           >
             Theme
           </span>
           <span
             className="font-mono text-[9px] uppercase tracking-[0.1em]"
-            style={{ color: "rgba(255,255,255,0.18)" }}
+            style={{ color: "var(--text-secondary)" }}
           >
             {activeTheme.description}
           </span>
@@ -113,9 +111,9 @@ export default function ThemeWidget() {
                   position: "relative",
                   overflow: "hidden",
                   cursor: "pointer",
-                  border: isActive
-                    ? `1.5px solid ${theme.accentColor}`
-                    : "1.5px solid rgba(255,255,255,0.08)",
+                  borderWidth: "1.5px",
+                  borderStyle: "solid",
+                  borderColor: isActive ? theme.accentColor : "var(--widget-border)",
                   transition: "border-color 0.25s",
                   padding: 0,
                   background: "transparent",
@@ -139,7 +137,9 @@ export default function ThemeWidget() {
                           position: "absolute",
                           inset: `${pct}%`,
                           borderRadius: "50%",
-                          border: "1px solid rgba(255,255,255,0.06)",
+                          borderWidth: "1px",
+                          borderStyle: "solid",
+                          borderColor: "var(--widget-border)",
                         }}
                       />
                     ))}
@@ -175,8 +175,8 @@ export default function ThemeWidget() {
                 className="font-mono text-[8px] uppercase tracking-[0.06em]"
                 style={{
                   color: active === theme.key
-                    ? "rgba(255,255,255,0.4)"
-                    : "rgba(255,255,255,0.15)",
+                    ? "var(--text-secondary)"
+                    : "var(--text-faint)",
                   transition: "color 0.25s",
                   display: "block",
                   overflow: "hidden",
