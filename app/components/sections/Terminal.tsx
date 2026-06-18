@@ -50,6 +50,27 @@ export default function Terminal({ compact = false, onOpen, onClose }: TerminalP
       setLines((prev) => [...prev, inputLine, ...result])
     }
 
+    if (cmd) {
+      const tokens = cmd.split(/\s+/)
+      const command = tokens[0].toLowerCase()
+      const args = tokens.slice(1).join(" ")
+      const hasError = result.some(l => l.type === "error")
+      const resultType = hasError ? "error" : result.some(l => l.type === "system") ? "system" : "success"
+      const isValidCommand = !(hasError && result.some(l => l.text.includes("command not found")))
+
+      if (typeof window !== "undefined" && (window as any).pendo) {
+        (window as any).pendo.track("terminal_command_executed", {
+          command,
+          args: args.substring(0, 100),
+          full_input: cmd.substring(0, 200),
+          result_type: resultType,
+          is_valid_command: isValidCommand,
+          output_line_count: result.length,
+          cwd: cwdToString(cwd),
+        })
+      }
+    }
+
     if (cmd) setHistory((prev) => [cmd, ...prev])
     setInput("")
     setHistIdx(-1)

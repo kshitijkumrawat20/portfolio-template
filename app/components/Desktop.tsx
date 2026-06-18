@@ -49,6 +49,12 @@ export default function Desktop({ posts }: { posts: PostMeta[] }) {
           konamiIdx.current = 0
           setKonamiActive(true)
           setTimeout(() => setKonamiActive(false), 3200)
+
+          if (typeof window !== "undefined" && (window as any).pendo) {
+            (window as any).pendo.track("konami_code_activated", {
+              feature_enabled: true,
+            })
+          }
         }
       } else {
         konamiIdx.current = e.key === KONAMI[0] ? 1 : 0

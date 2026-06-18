@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { Sparkles } from "lucide-react"
 
@@ -9,10 +9,32 @@ interface AttentionWeights {
   [head: number]: number[][] // N x N weight matrix
 }
 
+const DEFAULT_ATTENTION_TEXT = "Building autonomous multi-agent systems with LangGraph"
+
 export default function AttentionVisualizer({ compact = false }: { compact?: boolean }) {
   const [activeHead, setActiveHead] = useState<number>(0)
   const [hoveredTokenIndex, setHoveredTokenIndex] = useState<number | null>(null)
-  const [inputText, setInputText] = useState<string>("Building autonomous multi-agent systems with LangGraph")
+  const [inputText, setInputText] = useState<string>(DEFAULT_ATTENTION_TEXT)
+  const activeHeadRef = useRef(activeHead)
+  activeHeadRef.current = activeHead
+
+  useEffect(() => {
+    if (inputText === DEFAULT_ATTENTION_TEXT) return
+
+    const timer = setTimeout(() => {
+      const tokenCount = inputText.trim() ? inputText.trim().split(/\s+/).slice(0, 8).length : 0
+      if (typeof window !== "undefined" && (window as any).pendo) {
+        (window as any).pendo.track("attention_visualizer_text_analyzed", {
+          input_text: inputText.substring(0, 60),
+          token_count: tokenCount,
+          is_default_text: false,
+          active_head: activeHeadRef.current,
+        })
+      }
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [inputText])
   
   // Parse text into tokens (limit to 8 to fit layouts nicely)
   const tokens = useMemo(() => {
