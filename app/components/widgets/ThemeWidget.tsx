@@ -34,8 +34,19 @@ export default function ThemeWidget() {
   }, [])
 
   const select = (theme: ThemeKey) => {
+    const previousThemeKey = active
     setActive(theme)
     applyTheme(theme)
+
+    const themeInfo = themes.find((t) => t.key === theme)
+    if (typeof window !== "undefined" && (window as any).pendo) {
+      (window as any).pendo.track("theme_changed", {
+        theme_key: theme,
+        theme_label: themeInfo?.label ?? theme,
+        theme_description: themeInfo?.description ?? "",
+        previous_theme_key: previousThemeKey,
+      })
+    }
   }
 
   const activeTheme = themes.find((t) => t.key === active)!
